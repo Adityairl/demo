@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuktikula Club</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Reset some default margins and paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* General body styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #1d2555, #141b3a);
+      color: white;
+      height: 100vh;
+    }
+
+    /* Header Container */
+    .header-container {
+      display: flex;
+      justify-content: space-between; /* Keeps the logo and text on the left, nav on the right */
+      align-items: center;
+      background-color: #141b3a; /* Dark Blue */
+      padding: 15px 30px;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    /* Left section: Logo and Yuktikula Club Text */
+    .logo-text {
+      display: flex;
+      align-items: center; /* Aligns logo and text vertically in the center */
+    }
+
+    .logo-text img {
+      width: 50px; /* Adjust the size of the logo image */
+      margin-right: 10px; /* Space between logo and text */
+      background-color: transparent; /* Ensure background is transparent */
+      filter: drop-shadow(0 0 0.5rem #141b3a); /* Adds shadow effect to logo for better visibility */
+    }
+
+    .logo-text h1 {
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .logo-text h2 {
+      font-size: 16px;
+      font-weight: normal;
+      color: #e0e0e0; /* Lighter color for the subheading */
+      margin-top: 5px;
+    }
+
+    .club-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navigation bar (right side) */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    /* Aligning icons with text */
+    nav ul li a i {
+      margin-right: 8px; /* Space between icon and text */
+    }
+
+    /* Hover effect on links */
+    nav ul li a:hover {
+      color: #f5d742; /* Gold-like color for hover */
+    }
+
+    /* Catch All Events and Updates Section */
+    .updates-section {
+      width: 100%; /* Keep the width as it was */
+      padding: 20px; /* Reduced padding for height */
+      text-align: left; /* Align text to the left */
+      margin: 20px auto; /* Center the section with some margin */
+      background: transparent; /* Make the background transparent */
+      position: relative; /* Relative positioning for pseudo-elements */
+    }
+
+    /* Left and Right Backgrounds */
+    .updates-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, #1d2555, #141b3a);
+      z-index: -1; /* Ensure the background is behind the content */
+    }
+
+    /* Heading Box Styles */
+    .heading-box {
+      border: 2px solid white; /* White border */
+      padding: 5px 15px; /* Reduced padding for height */
+      border-radius: 5px; /* Slightly rounded corners */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+      display: inline-block; /* Box only around the heading */
+      margin-bottom: 10px; /* Reduced space below the heading box */
+      color: white;
+      background-color: transparent; /* Ensure background is transparent */
+    }
+
+    .updates-section p {
+      font-size: 18px;
+      line-height: 1.4; /* Reduced line height for height */
+      margin-bottom: 20px; /* Reduced space below paragraph */
+    }
+
+    /* Join Now button */
+    .join-now-btn {
+      background-color: #25d366; /* WhatsApp green */
+      color: white;
+      text-transform: uppercase;
+      padding: 10px 20px; /* Reduced padding for height */
+      font-size: 16px; /* Reduced font size for height */
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s ease;
+      margin-top: 10px; /* Space above the button */
+    }
+
+    .join-now-btn:hover {
+      background-color: #20b458;
+    }
+
+    .join-now-btn i {
+      font-size: 20px; /* Reduced icon size */
+    }
+
+    /* Footer message styling */
+    .footer-message {
+      margin-top: 10px; /* Reduced space above the message */
+      font-size: 18px; /* Reduced font size for height */
+      color: white; /* Ensure message color is visible */
+    }
+
+    /* Upcoming Events Section */
+    .upcoming-events {
+      margin: 40px auto; /* Center the section with some margin */
+      width: 100%; /* Full width */
+      max-width: 800px; /* Optional max-width */
+      background-color: transparent; /* Ensure background is transparent */
+      display: flex; /* Use flex to align items side by side */
+      justify-content: space-between; /* Space between dropdown and cards */
+      align-items: flex-start; /* Align items to the top */
+    }
+
+    .events-dropdown {
+      border: 2px solid white; /* White border */
+      border-radius: 5px; /* Rounded corners */
+      padding: 10px; /* Padding inside the dropdown */
+      position: relative; /* Position relative for the dropdown icon */
+      color: white;
+      background-color: transparent; /* Transparent background */
+      cursor: pointer; /* Change cursor to pointer */
+      margin-right: 20px; /* Space to the right of the dropdown */
+      display: flex;
+      align-items: center; /* Center align dropdown text */
+      width: 100%; /* Make dropdown take the full available space */
+    }
+
+    .dropdown-symbol {
+      content: "\25BC"; /* Downward arrow symbol */
+      margin-left: 10px; /* Space between text and symbol */
+    }
+
+    .event-cards {
+      display: flex; /* Flex for side-by-side layout */
+      gap: 20px; /* Space between cards */
+      width: 100%; /* Ensure cards take available width */
+    }
+
+    .event-card {
+      display: flex; /* Flex for side-by-side layout */
+      background-color: #1d2555; /* Dark background for card */
+      border-radius: 8px; /* Rounded corners for card */
+      padding: 15px; /* Padding inside the card */
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5); /* Darker shadow effect */
+      color: white;
+      transition: transform 0.2s; /* Smooth hover effect */
+      flex: 1; /* Make cards flexible to take available space */
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px); /* Lift effect on hover */
+    }
+
+    .event-image {
+      width: 150px; /* Fixed width for event image */
+      border-radius: 5px; /* Rounded corners for image */
+      margin-right: 15px; /* Space between image and details */
+    }
+
+    .event-details {
+      flex: 1; /* Take remaining space */
+    }
+
+    .event-title {
+      font-size: 20px; /* Title size */
+      margin-bottom: 10px; /* Space below title */
+    }
+
+    .event-description {
+      font-size: 16px; /* Description size */
+      margin-bottom: 10px; /* Space below description */
+    }
+
+    /* Link styling */
+    .event-link {
+      color: red; /* Red color for link */
+      border: 2px solid red; /* Red border */
+      border-radius: 5px; /* Rounded corners */
+      padding: 5px 10px; /* Padding inside the link */
+      text-decoration: none; /* Remove underline */
+      display: inline-block; /* Inline-block for proper padding */
+      transition: background-color 0.3s; /* Smooth background transition */
+    }
+
+    .event-link:hover {
+      background-color: red; /* Change background color on hover */
+      color: white; /* Change text color on hover */
+    }
+
+    /* Adding some responsive behavior */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: flex-start; /* Align items to the left */
+      }
+
+      nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        gap: 10px; /* Reduced gap */
+      }
+
+      .upcoming-events {
+        flex-direction: column; /* Stack dropdown and cards vertically */
+      }
+
+      .event-cards {
+        flex-direction: column; /* Stack cards vertically */
+      }
+
+      .event-card {
+        width: 100%; /* Make cards full width on small screens */
+      }
+
+      .event-image {
+        width: 100%; /* Full width for image on small screens */
+        margin-bottom: 10px; /* Space below image */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="header-container">
+    <!-- Left side: Logo and Yuktikula Club text side by side -->
+    <div class="logo-text">
+      <img src="finallogo.jpg" alt="Yuktikula Club Logo"> <!-- Ensure logo background is transparent -->
+      <div class="club-title">
+        <h1>Yuktikula Club</h1>
+        <h2>Official CSE-DS Dept. Club Of GLBITM</h2>
+      </div>
+    </div>
+
+    <!-- Right side: Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="#home"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="#events"><i class="fas fa-calendar-alt"></i>Events</a></li>
+        <li><a href="#updates"><i class="fas fa-bullhorn"></i>Updates</a></li>
+        <li><a href="#gallery"><i class="fas fa-images"></i>Gallery</a></li>
+        <li><a href="#about"><i class="fas fa-info-circle"></i>About Us</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Catch All Events and Updates Section -->
+  <section class="updates-section">
+    <!-- Heading with a border and shadow -->
+    <div class="heading-box">
+      <h2>Catch All Events and Updates Faster</h2>
+    </div>
+    <p>
+      Are you ready to make the most of your college life? Our club is more than just meetings and events—it's a vibrant community where ideas flourish, friendships are made, and everyone's voice is heard. Whether you're a newbie or a seasoned member, there's always something exciting happening here!<br><br>
+      🌟 Connect with like-minded peers. 💻 Stay updated on upcoming events, workshops, and activities including 💡 new ideas, and collaborations. 🎉 Enjoy fun discussions, networking, and more! Tap the link below to join our WhatsApp group and become an active member of our vibrant club community! Let's grow and thrive together 🚀
+    </p>
+
+    <!-- Left-aligned message -->
+    <div class="footer-message">
+      We can't wait to see you there!<br>
+    </div>
+
+    <!-- Join Now Button with WhatsApp Icon -->
+    <a href="https://chat.whatsapp.com/your-whatsapp-link" class="join-now-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i> Join Now
+    </a>
+  </section>
+
+  <!-- Upcoming Events Section -->
+  <div class="upcoming-events">
+    <div class="events-dropdown">
+      <span>Upcoming Events</span>
+      <span class="dropdown-symbol">&#x25BC;</span> <!-- Downward arrow symbol -->
+    </div>
+
+    <!-- Event Cards Container -->
+    <div class="event-cards">
+      <!-- First Event Card -->
+      <div class="event-card">
+        <img src="event1.jpg" alt="Event 1" class="event-image"> <!-- Replace with actual image source -->
+        <div class="event-details">
+          <div class="event-title">Online Webinar</div>
+          <div class="event-description">Join us for an insightful webinar on current trends in technology.</div>
+          <a href="https://your-google-form-link" class="event-link" target="_blank">Register Now</a>
+        </div>
+      </div>
+
+      <!-- Second Event Card -->
+      <div class="event-card">
+        <img src="event2.jpg" alt="Event 2" class="event-image"> <!-- Replace with actual image source -->
+        <div class="event-details">
+          <div class="event-title">Inauguration</div>
+          <div class="event-description">Celebrate the launch of our new club initiatives with us.</div>
+          <a href="https://your-google-form-link" class="event-link" target="_blank">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Section (to be added below) -->
+  <section class="additional-section" style="padding: 20px; color: white; text-align: center;">
+    <h3>Additional Information</h3>
+    <p>Your additional content goes here!</p>
+  </section>
+
+</body>
+</html>
